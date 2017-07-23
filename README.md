@@ -5,8 +5,7 @@ Usage: relays.py [OPTIONS]
 
 Options:
   -f, --fast       These are suitable for high-bandwidth circuits.
-  -e, --exitnodes  These are more useful for building general-purpose exit
-                   circuits than for relay circuits.
+  -e, --exitnodes  These are more useful for building general-purpose exit circuits than for relay circuits.
   -g, --guard      These are suitable for use as an entry gaurd.
   -h, --hsdir      These are considered a v2 hidden service directory.
   -r, --running    These are currently usable.
