@@ -14,6 +14,8 @@ import json
 @click.option('-v', '--valid', is_flag=True, help='These have been \'validated\'.')
 def cli(fast, exitnodes, guard, hsdir, running, stable, v2dir, valid):
     """Command-line client for the Tor Onionoo API that fetches lists of relays. Only one flag should be used at a time."""
+    if sum(arg is not False for arg in (fast, exitnodes, guard, hsdir, running, stable, v2dir, valid)) > 1:
+        raise click.ClickException('Please use just one flag at a time.')
     params='?search=flag:'
     if fast: params+='Fast'
     if exitnodes: params+='Exit'
