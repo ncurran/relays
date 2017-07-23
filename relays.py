@@ -29,6 +29,6 @@ def cli(fast, exit, guard, hsdir, running, stable, v2dir, valid):
     results = json.loads(r.text)
     for relay in results['relays']:
         if relay.get('a'): print relay['a'][0] 
-        #[0] will grab only the 
+        #[0] will grab only the ipv4 address 
 pv4 addressif __name__ == '__main__':
     cli()
