@@ -1,7 +1,7 @@
 # relays
 Usage: relays.py [OPTIONS]
 
-  Command-line client for the Tor Onionoo API that fetches lists of relays.
+  Simple command-line client for the Tor Onionoo API that fetches lists of relays.
 
 Options:
   -f, --fast       These are suitable for high-bandwidth circuits.  
