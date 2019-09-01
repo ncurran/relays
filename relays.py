@@ -15,6 +15,8 @@ import json
 def cli(fast, exitnodes, guard, hsdir, running, stable, v2dir, valid):
     """Command-line client for the Tor Onionoo API that fetches lists of relays. """
 
+    if not any([fast, exitnodes, guard, hsdir, running, stable, v2dir, valid]):
+        raise click.ClickException('Use --help if you need help but please use some flag.')
     if sum(arg is not False for arg in (fast, exitnodes, guard, hsdir, running, stable, v2dir, valid)) > 1:
         raise click.ClickException('Please use just one flag at a time.')
 
@@ -29,11 +31,15 @@ def cli(fast, exitnodes, guard, hsdir, running, stable, v2dir, valid):
     if valid: params+='Valid'
 
     #not using params= because the api doesn't like when we percent-encode the colon
-    r = requests.get('https://onionoo.torproject.org/summary%s'%params) 
-    results = json.loads(r.text)
-    for relay in results['relays']:
-        if relay.get('a'): click.echo(relay['a'][0])
-        #[0] will grab only the ipv4 address 
-
+    r = requests.get('https://onionoo.torproject.org/summary%s'%params, verify=False) 
+    try: 
+        results = json.loads(r.text)
+        for relay in results['relays']:
+            if relay.get('a'): click.echo(relay['a'][0])
+            #[0] will grab only the ipv4 address 
+    except:
+        print(r.status_code)
+        print(r.headers)
+        print(r.text)
 if __name__ == '__main__':
     cli()
