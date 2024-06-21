@@ -4,6 +4,7 @@ Usage: relays.py [OPTIONS]
   Simple command-line client for the Tor Onionoo API that fetches lists of relays.
 
 Options:
+
   -f, --fast       These are suitable for high-bandwidth circuits.  
   -e, --exitnodes  These are more useful for building general-purpose exit circuits than for relay circuits.  
   -g, --guard      These are suitable for use as an entry gaurd.  
