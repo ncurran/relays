@@ -31,7 +31,7 @@ def cli(fast, exitnodes, guard, hsdir, running, stable, v2dir, valid):
     if valid: params+='Valid'
 
     #not using params= because the api doesn't like when we percent-encode the colon
-    r = requests.get('https://onionoo.torproject.org/summary%s'%params, verify=False) 
+    r = requests.get('https://onionoo.torproject.org/summary%s'%params) 
     try: 
         results = json.loads(r.text)
         for relay in results['relays']:
